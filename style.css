@@ -52,7 +52,7 @@ article {
   border-radius: 16px;
   background-color: #eee;
   box-shadow: rgb(0, 0, 0, 0.7);
-  margin: 100px auto;
+  margin: 50px auto 30px;
 }
 #startBtn:hover {
   background-color: #f7e600;
@@ -182,4 +182,20 @@ article {
 
 .share {
   margin: 0 auto 30px;
+}
+
+.kakao_ad {
+  width: 320px;
+  margin: 30px auto;
+}
+
+.codelion {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+.banner_img {
+  width: 300px;
 }
