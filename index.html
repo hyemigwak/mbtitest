@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>세렝게티 동물 찾기</title>
+    <title>얄미운 친구 스타일 찾기</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -15,22 +15,28 @@
   </head>
   <body class="container">
     <article class="start">
-      <h1 class="mt-5 text-center">나랑 꼭 닮은 세렝게티 동물은?</h1>
-      <button type="button" class="btn btn-primary mt-5" onclick="start()">테스트 시작하기</button>
+      <h1 id="mbtititle" class="text-center">나는 어떤 얄미운 친구 스타일일까?</h1>
+      <button type="button" id="startBtn" onclick="start()">테스트 시작하기</button>
     </article>
     <article class="question">
       <div class="progress mt-5">
-        <div class="progress-bar" role="progressbar" style="width: calc(100 / 12 * 1%)"></div>
+        <div class="progress-bar bg-warning" role="progressbar" style="width: calc(100 / 12 * 1%)"></div>
       </div>
-      <h2 id="title" class="text-center mt-5">문제</h2>
+      <h2 id="title" class="text-center">문제</h2>
       <input id="type" type="hidden" value="EI" />
-      <button id="A" type="button" class="btn btn-primary mt-5">Primary</button>
-      <button id="B" type="button" class="btn btn-primary mt-5">Primary</button>
+      <button id="A" type="button">Primary</button>
+      <button id="B" type="button">Primary</button>
     </article>
     <article class="result">
-      <img id="img" class="rounded-circle mt-5" src="rabbit.png" alt="rabbitimg" />
-      <h2 id="animal" class="text-center mt-5">동물이름</h2>
+      <img id="img" class="rounded-circle mt-5" src="./images/rabbit.png" alt="rabbitimg" />
+      <h2 id="friend" class="text-center mt-5">동물이름</h2>
       <h3 id="explain" class="text-center mt-5">설명</h3>
+      <article class="nomatchFreind">
+        <h4 id="nofriend" class="text-center mt-5">안맞는 친구유형</h4>
+        <h4 id="nomatch" class="text-center">title</h4>
+        <img id="nomatchmbti" class="rounded-circle" src="./images/rabbit.png" alt="기본이미지" />
+      </article>
+      <button id="restart" onclick="restart()">테스트 다시하기</button>
     </article>
     <input type="hidden" id="EI" value="0" />
     <input type="hidden" id="SN" value="0" />
@@ -45,23 +51,152 @@
     <script>
       var num = 1;
       var q = {
-        1: { title: "문제1번", type: "EI", A: "E", B: "I" },
-        2: { title: "문제2번", type: "EI", A: "E", B: "I" },
-        3: { title: "문제3번", type: "EI", A: "E", B: "I" },
-        4: { title: "문제4번", type: "SN", A: "S", B: "N" },
-        5: { title: "문제5번", type: "SN", A: "S", B: "N" },
-        6: { title: "문제6번", type: "SN", A: "S", B: "N" },
-        7: { title: "문제7번", type: "TF", A: "T", B: "F" },
-        8: { title: "문제8번", type: "TF", A: "T", B: "F" },
-        9: { title: "문제9번", type: "TF", A: "T", B: "F" },
-        10: { title: "문제10번", type: "JP", A: "J", B: "P" },
-        11: { title: "문제11번", type: "JP", A: "J", B: "P" },
-        12: { title: "문제12번", type: "JP", A: "J", B: "P" },
+        1: { title: "약속없는 주말, 너무 심심하다. 어떻게 보낼까?", type: "EI", A: "친구한테 카톡해서 놀자고 한다", B: "오늘은 집에서 쉬면서 못 했던것들 할래" },
+        2: { title: "친구가 갑자기 애인이 생겼다고 한다.", type: "EI", A: "뭐야? 어떤 사람이야? 언제 만났어? 질문 폭격한다.", B: "솔로탈출 축하해~! 먼저 축하해준다." },
+        3: {
+          title: "오늘 이미 약속이 있는데, 친한 친구가 갑자기 저녁에 잠깐 보자고 한다.",
+          type: "EI",
+          A: "친구 좋은게 뭐야. 친한 친구가 부르면 달려간다",
+          B: "오늘 말고 내일은 어때? 다른 날을 제안해본다",
+        },
+        4: { title: "친구가 오늘 뭐 하고 놀까? 라고 물어봤을때 나는", type: "SN", A: "내가 자주 가는 맛집 있는데 거기 가볼래?", B: "일단 만나서 정할까?" },
+        5: {
+          title: "퇴근 후 만난 친구가 표정이 안좋아보인다. 이럴때 나는?",
+          type: "SN",
+          A: "회사에서 뭔 일 있었어? 무슨일이야!? 왜 우울한지 물어본다!",
+          B: "오늘 괜찮아? 놀 수 있겠어? 표정을 살피며 걱정한다.",
+        },
+        6: {
+          title: "어제 먹었던 맛있는 떡볶이를 친구한테 소개해주고 싶다!",
+          type: "SN",
+          A: "어제 먹은 떡볶이 약간 매우면서 떡이 쫄깃하더라~!",
+          B: "어제 진짜 맛있는 떡볶이 먹었는데, 너가 무조건 좋아할 맛이야",
+        },
+        7: { title: "오늘은 내 생일! 친구가 선물을 줬는데 뭘까?", type: "TF", A: "내가 정말 갖고 싶었던 브랜드의 옷", B: "손편지에 정성이 가득한 직접 만든 선물" },
+        8: { title: "친구가 차 사고가 났다고 했을때 나의 반응은?", type: "TF", A: "보험은 들었지? 누구 과실이야? 어떻게 된거야?", B: "안다쳤어? 아찔했겠다. 지금은 괜찮고?" },
+        9: {
+          title: "친구가 발표준비를 열심히 했는데 생각보다 잘 못해서 울적한 상태이다. 이 상황에서 위로를 해주려면?",
+          type: "TF",
+          A: "오늘 발표할때 발음이 또박또박해서 듣기 좋더라! ",
+          B: "이정도면 잘한거지!! 발표준비하느라 고생했어!",
+        },
+        10: { title: "친구랑 여행을 간다! 여행준비를 할때 나는?", type: "JP", A: "첫째 날은 여기에서 이걸 먹고, 둘째날은 저걸 먹고 거길 가자!", B: "나는 여기만 가보면 될거같아~ 나머지는 상관없어!" },
+        11: { title: "금요일에 중요한 시험을 본다. 오늘은 월요일이다.", type: "JP", A: "월요일~수요일은 개념 훑기, 목요일은 실전준비하면 되겠다.", B: "아직 시간 많네~ 좀 쉬다 해야겠다." },
+        12: { title: "집앞에 새로운 카페가 생겼다. 커피를 마시고 싶은데", type: "JP", A: "다니던 단골 카페에서 원래 마시려고 했던 것을 먹는다.", B: "오.. 궁금한데 여기서 커피 한번 마셔볼까? " },
       };
       var result = {
-        ISTJ: { animal: "하마", explain: "하마 설명", img: "rabbit.png" },
-        ENFP: { animal: "사자", explain: "사자 설명", img: "rabbit.png" },
-        ENTJ: { animal: "호랑이", explain: "호랑이 설명", img: "rabbit.png" },
+        ENTJ: {
+          friend: "다이어트 결심한 친구 앞에서 삼겹살 구워먹는 친구",
+          explain: "대담하면서도 상상력이 풍부한 강한 의지의 소유자로, 친구를 놀리기 위해서라면 다양한 방법을 모색하거나 여의치 않으면 새로운 방안을 창출하는 사람",
+          img: "./images/meat.jpg",
+          nomatch: "계산할때만 되면 화장실 가는 친구",
+          nomatchmbti: "./images/payme.jpg",
+        },
+        ENTP: {
+          friend: "애인과 헤어졌는데 그 옆에서 오늘 헤어졌어요 노래 부르는 친구",
+          explain: "재치있고 유머러스한 당신. 재미있게 놀려서 상대방이 화를 낼 수도 없게 만드는 당신은 팔방미인",
+          img: "./images/sing.jpg",
+          nomatch: "인스타는 올리면서 카톡 답장 3일에 한번 하는 친구",
+          nomatchmbti: "./images/noreply.jpg",
+        },
+        ENFJ: {
+          friend: "웃을 때마다 내 팔이나 등 때리는 친구",
+          explain: "리액션이 좋고, 의사소통에 능한 당신, 웃을때는 옆사람을 치면서 깔깔 웃는다. 다만 옆 친구의 표정을 잘 살피길! ",
+          img: "./images/hitme.jpg",
+          nomatch: "퇴근 5분 전 일시키는 부장님같은 친구",
+          nomatchmbti: "./images/getoff.jpg",
+        },
+        ENFP: {
+          friend: "치질 수술한 친구한테 불닭볶음면 주는 친구 ",
+          explain: "불닭볶음면처럼 화끈하고 열정적인 당신, 창의적인 방법으로 놀리고 싶어서 항상 머릿속에 여러 아이디어가 떠오르는 사람이다.",
+          img: "./images/ramen.jpg",
+          nomatch: "친구는 운전하는데 혼자 조수석에서 내내 자는 친구",
+          nomatchmbti: "./images/drive.jpg",
+        },
+        ESTJ: {
+          friend: "수업 다 끝나고 교수님 질문있어요! 외치는 친구",
+          explain: "목표 지향적이고, 진취적인 야심가같은 당신, 궁금한게 있으면 눈치보지않고 질문하는 모습이 멋져요!",
+          img: "./images/handsup.jpg",
+          nomatch: "뭐하나 꼬투리 잡아서 틈틈히 놀리는 친구",
+          nomatchmbti: "./images/merong.jpg",
+        },
+        ESFJ: {
+          friend: "고기굽고 있으면 혼자 다 집어먹는 친구",
+          explain: "말보다 행동이 앞선 당신. 다른 사람들이 실컷 떠들고 놀고 있을때 리액션하면서 틈틈히 고기를 집어먹는다.",
+          img: "./images/meat.jpg",
+          nomatch: "더운데 혼자 춥다고 에어컨 끄는 친구",
+          nomatchmbti: "./images/hotcold.jpg",
+        },
+        ESTP: {
+          friend: "오만가지 귀여운척은 다 하고 하루에 셀카 1천장씩 찍는 친구",
+          explain: "노는 것과 술자리에 도가 튼 당신, 분위기를 밝게 띄우는데 아주 능숙하고 자유분방하다. 예쁘게 찍어줄때까지 무한 포즈를 취한다.",
+          img: "./images/selfie.jpg",
+          nomatch: "다같이 먹다가 치울때 되면 스윽 사라지는 친구",
+          nomatchmbti: "./images/selfie.jpg",
+        },
+        ESFP: {
+          friend: "여행계획 하나도 안짜놓고 여행가서 다른거 하자고 막무가내인 친구",
+          explain: "즐겁고 재미있는 인생을 사는 당신, 가끔은 즉흥적으로 계획을 무너뜨리고 놀고 싶어하네요! 가끔은 계획대로 놀아보는 건 어때요!",
+          img: "./images/travel.jpg",
+          nomatch: "약속시간 다 됬는데 아직 집인 친구",
+          nomatchmbti: "./images/stillhome.jpg",
+        },
+        ISTJ: {
+          friend: "퇴근 5분 전에 일 시키는 팀장님같은 친구",
+          explain: "성실하고 책임감이 강한 성격의 당신, 게으르고 불성실한 것이 너무 너무 싫네요! 마음에 안들면 참고 참다가 결국 퇴근전에 다시 해달라고 요청하는군요!",
+          img: "./images/getoff.jpg",
+          nomatch: "웃을 때마다 내 팔이나 등 때리는 친구",
+          nomatchmbti: "./images/getoff.jpg",
+        },
+        ISFJ: {
+          friend: "계산할때만 되면 화장실 가는 친구",
+          explain: "차분하며, 옆에서 묵묵히 서포트하는 당신!! 계산할 때 조용히 사라지는 당신은 그림자 같은 친구입니다.",
+          img: "./images/payme.jpg",
+          nomatch: "다이어트 결심한 친구 앞에서 삼겹살 구워먹는 친구",
+          nomatchmbti: "./images/meat.jpg",
+        },
+        ISTP: {
+          friend: "친구는 운전하는데 혼자 조수석에서 내내 자는 친구",
+          explain: "과묵하고 조용한 당신. 너무 과묵해서 그만 조수석에서 쿨쿨 잠들어버립니다…",
+          img: "./images/drive.jpg",
+          nomatch: "치질 수술한 친구한테 불닭볶음면 주는 친구 ",
+          nomatchmbti: "./images/ramen.jpg",
+        },
+        ISFP: {
+          friend: "인스타는 올리면서 카톡 답장 3일에 한번 하는 친구",
+          explain: "귀찮은건 계속 무한으로 미루는 당신, 그래도 연락을 씹지는 않는다. 언젠간 답장은 하긴 해야지… 근데 언젠가일뿐",
+          img: "./images/noreply.jpg",
+          nomatch: "애인과 헤어졌는데 그 옆에서 오늘 헤어졌어요 부르는 친구",
+          nomatchmbti: "./images/sing.jpg",
+        },
+        INTJ: {
+          friend: "더운데 혼자 춥다고 에어컨 끄는 친구",
+          explain: "논리적이고 객관적인 당신. 분명 지금 추운 것 같은데 왜 다들 덥다고하지? 에어컨 꺼도 될거같아! 하면서 에어컨 리모컨을 드는 순간 주위의 따가운 시선을 받아요!",
+          img: "./images/hotcold.jpg",
+          nomatch: "고기굽고 있으면 혼자 다 집어먹는 친구",
+          nomatchmbti: "./images/meat.jpg",
+        },
+        INTP: {
+          friend: "약속시간 다 됬는데 아직 집인 친구",
+          explain: "생각이 많고, 아이디어에 관심이 많은 당신. 생각하느라 약속시간이 다 된 것을 이제 알았네요! 나가기 귀찮은데… 그냥 취소하고 집에서 쉴까 고민하는 모습도 보이네요!",
+          img: "./images/stillhome.jpg",
+          nomatch: "여행계획 하나도 안짜놓고 여행가서 다른거 하자고 막무가내인 친구",
+          nomatchmbti: "./images/travel.jpg",
+        },
+        INFJ: {
+          friend: "뭐하나 꼬투리 잡아서 틈틈히 놀리는 친구",
+          explain: "이타주의자인 이들은 다른 사람의 감정도 내 감정만큼 중요하다고 생각해요! 상대방 눈치보면서 떠오를때마다 틈틈히, 꾸준히 놀리는 친구네요!",
+          img: "./images/merong.jpg",
+          nomatch: "수업 다 끝나고 교수님 질문있어요! 외치는 친구",
+          nomatchmbti: "./images/handsup.jpg",
+        },
+        INFP: {
+          friend: "다같이 먹다가 치울때 되면 스윽 사라지는 친구",
+          explain: "대체적으로 적응력이 좋고 관대한 당신, 해야겠다는 생각은 있지만, 정작 실천으로는 안옮기고 게으른 편이네요!",
+          img: "./images/cleanalone.jpg",
+          nomatch: "오만가지 귀여운척은 다 하고 하루에 셀카 1천장씩 찍는 친구",
+          nomatchmbti: "./images/selfie.jpg",
+        },
       };
       function start() {
         $(".start").hide();
@@ -87,10 +222,11 @@
           $("#SN").val() < 2 ? (mbti += "N") : (mbti += "S");
           $("#TF").val() < 2 ? (mbti += "F") : (mbti += "T");
           $("#JP").val() < 2 ? (mbti += "P") : (mbti += "J");
-          alert(mbti);
           $("#img").attr("src", result[mbti]["img"]);
-          $("#animal").html(result[mbti]["animal"]);
+          $("#friend").html(result[mbti]["friend"]);
           $("#explain").html(result[mbti]["explain"]);
+          $("#nomatch").html(result[mbti]["nomatch"]);
+          $("#nomatchmbti").attr("src", result[mbti]["nomatchmbti"]);
         } else {
           $(".progress-bar").attr("style", "width: calc(100 / 12 * " + num + "%)");
           $("#title").html(q[num]["title"]);
@@ -99,6 +235,9 @@
           $("#B").html(q[num]["B"]);
           num++;
         }
+      }
+      function restart() {
+        window.location.reload();
       }
     </script>
   </body>
