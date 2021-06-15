@@ -12,7 +12,7 @@ body {
 #mbtititle {
   font-weight: bold;
   margin-top: 200px;
-  font-size: 45px;
+  font-size: 30px;
 }
 
 article {
@@ -26,29 +26,31 @@ article {
   display: none;
 }
 #img {
-  width: 300px;
-  height: 300px;
+  width: 180px;
+  height: 180px;
   margin: 0 auto;
 }
 
 #nomatchmbti {
-  width: 200px;
-  height: 200px;
-  margin: 20px auto 60px;
+  width: 180px;
+  height: 180px;
+  margin: 20px auto 40px;
 }
 
 #title {
   font-weight: 600;
-  margin: 100px auto 40px;
+  font-size: 22px;
+  margin: 100px auto 20px;
+  line-height: 1.5;
 }
 
 #startBtn {
   border: none;
   color: #212121;
-  font-size: 30px;
-  font-weight: 500;
-  width: 400px;
-  height: 100px;
+  font-size: 20px;
+  font-weight: 600;
+  width: 200px;
+  height: 80px;
   border-radius: 16px;
   background-color: #eee;
   box-shadow: rgb(0, 0, 0, 0.7);
@@ -58,7 +60,7 @@ article {
   background-color: #f7e600;
   color: #212121;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 22px;
 }
 
 #startBtn:focus {
@@ -68,9 +70,9 @@ article {
 
 #A {
   border: none;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
-  width: 600px;
+  width: 280px;
   height: 100px;
   border-radius: 16px;
   margin: 40px auto 20px;
@@ -79,9 +81,9 @@ article {
 
 #B {
   border: none;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
-  width: 600px;
+  width: 280px;
   height: 100px;
   border-radius: 16px;
   margin: 40px auto;
@@ -90,9 +92,9 @@ article {
 
 #A:hover {
   border: none;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
-  width: 600px;
+  width: 280px;
   height: 100px;
   border-radius: 16px;
   margin: 40px auto 20px;
@@ -106,9 +108,9 @@ article {
 
 #B:hover {
   border: none;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
-  width: 600px;
+  width: 280px;
   height: 100px;
   border-radius: 16px;
   margin: 40px auto 20px;
@@ -123,28 +125,31 @@ article {
 
 #friend {
   font-weight: bold;
+  font-size: 22px;
+  width: 280px;
+  margin: 0 auto;
 }
 
 #explain {
-  width: 600px;
+  width: 280px;
   border-radius: 16px;
   background-color: #eee;
-  font-size: 20px;
-  padding: 25px 20px;
-  line-height: 1.3;
+  font-size: 14px;
+  padding: 20px 20px;
+  line-height: 1.5;
   margin: 0 auto;
   font-weight: 500;
 }
 
 #nofriend {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 700;
   color: #81c147;
 }
 
 #nomatch {
-  font-size: 20px;
-  width: 300px;
+  font-size: 17px;
+  width: 240px;
   height: 100px;
   font-weight: 600;
   margin: 10px auto;
@@ -157,7 +162,7 @@ article {
   border: none;
   width: 180px;
   height: 40px;
-  font-weight: 500;
+  font-weight: 700;
   border-radius: 16px;
   margin: 0 auto 50px;
 }
@@ -174,9 +179,9 @@ article {
 
 .nomatchFreind {
   border: 2px solid #009902;
-  width: 400px;
-  height: 420px;
-  margin: 40px auto;
+  width: 280px;
+  height: 400px;
+  margin: 30px auto;
   border-radius: 10px;
 }
 
@@ -190,12 +195,12 @@ article {
 }
 
 .codelion {
-  width: 300px;
+  width: 180px;
   display: flex;
   justify-content: center;
   margin: 10px auto;
 }
 
 .banner_img {
-  width: 300px;
+  width: 200px;
 }
