@@ -193,14 +193,3 @@ article {
   width: 320px;
   margin: 30px auto;
 }
-
-.codelion {
-  width: 180px;
-  display: flex;
-  justify-content: center;
-  margin: 10px auto;
-}
-
-.banner_img {
-  width: 200px;
-}
