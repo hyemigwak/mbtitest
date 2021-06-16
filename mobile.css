@@ -79,6 +79,12 @@ article {
   padding: 0px 40px;
 }
 
+/* #A:hover {
+  width: 280px;
+  font-size: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.07);
+} */
+
 #B {
   border: none;
   font-size: 18px;
@@ -105,6 +111,12 @@ article {
   border: none;
   outline: none;
 }
+
+/* #B:hover {
+  width: 280px;
+  font-size: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.07);
+} */
 
 #B:active {
   border: none;
@@ -205,9 +217,9 @@ article {
 
 .copyright {
   position: absolute;
-  font-size: 12px;
+  font-size: 10px;
   top: 38%;
-  left: 40%;
+  left: 30%;
 }
 
 .copyright span {
