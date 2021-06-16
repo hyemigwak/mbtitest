@@ -188,3 +188,22 @@ article {
   width: 320px;
   margin: 30px auto;
 }
+
+.copyrightbox {
+  height: 80px;
+  background-color: #eee6c4;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.copyright {
+  position: absolute;
+  top: 38%;
+  left: 40%;
+}
+
+.copyright span {
+  font-weight: 700;
+}
