@@ -199,9 +199,10 @@ article {
 }
 
 .copyright {
-  position: absolute;
-  top: 38%;
-  left: 40%;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  line-height: 80px;
 }
 
 .copyright span {

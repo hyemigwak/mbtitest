@@ -213,13 +213,14 @@ article {
   bottom: 0;
   left: 0;
   width: 100%;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .copyright {
-  position: absolute;
-  font-size: 10px;
-  top: 38%;
-  left: 30%;
+  width: 100%;
+  font-size: 9px;
+  line-height: 40px;
 }
 
 .copyright span {
